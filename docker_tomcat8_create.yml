@@ -1,0 +1,8 @@
+---
+- name: Install docker software
+  hosts: tag_Name_FreeServer
+  user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - role: docker_tomcat8
