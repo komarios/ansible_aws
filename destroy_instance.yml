@@ -1,0 +1,20 @@
+---
+- name: Destoy an EC2 Instance
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: False
+  remote_user: ubuntu  
+  tasks:
+  tasks:
+    - ec2_remote_facts:
+        region: 'eu-central-1'
+        filters:
+          instance-state-name: running
+      register: my_running_servers
+    - debug:
+        msg: "{{ my_running_servers }}"
+    - name: Destroy instance
+      ec2: state='absent'
+           region='eu-central-1'
+           instance_ids="{{ my_running_servers.instances | map(attribute='id') | list }}"
+           wait=true

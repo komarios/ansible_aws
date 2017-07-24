@@ -1,0 +1,17 @@
+---
+- name: Provision an EC2 Instance
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: False
+  remote_user: ubuntu  
+  tasks:
+    - name: Create new instance
+      ec2: key_name=FreeServer
+           instance_type=t2.micro
+           image=ami-1c45e273
+           region='eu-central-1'
+           wait=yes
+           count=10
+           vpc_subnet_id=subnet-af2bcbd5
+           group_id=sg-4e73e926
+           assign_public_ip=yes

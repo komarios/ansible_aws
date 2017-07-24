@@ -1,0 +1,8 @@
+---
+- name: Update OS
+  hosts: tag_Name_FreeServer
+  user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - role: update_os

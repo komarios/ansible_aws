@@ -1,0 +1,8 @@
+---
+- include: aws_start_instance.yml
+
+- include: aws_inventory_refresh.yml
+
+- include: aws_update_os.yml
+
+- include: aws_stop_instance.yml

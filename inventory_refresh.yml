@@ -1,0 +1,8 @@
+---
+- name: Refresh EC2 Inventory
+  hosts: 127.0.0.1
+  connection: local
+  user: ubuntu
+  tasks:
+    - name: Refresh ec2 inventory
+      meta: refresh_inventory

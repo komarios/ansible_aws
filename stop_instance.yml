@@ -1,0 +1,12 @@
+---
+- name: Stop EC2 Instance
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: False
+  remote_user: ubuntu
+  tasks:
+    - name: Shutdown instance
+      ec2: state='stopped'
+           region='eu-central-1'
+           instance_ids='i-01d381e13efa44c23'
+           wait=true
