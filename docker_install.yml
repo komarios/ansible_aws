@@ -1,0 +1,21 @@
+---
+- name: Install docker software
+  hosts: tag_Name_FreeServer
+  user: ubuntu
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+    - name: Install docker.io
+      apt:
+        name: docker.io
+        state: installed
+    - name: Install python-minimal
+      apt:
+        name: python-minimal
+        state: installed
+    - name: Start docker service
+      service: name=docker state=started
